@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Лев Голубчиков](https://up.htmlacademy.ru/javascript-individual/1/user/2371119).
-* Наставник: `Неизвестно`.
+* Наставник: [Сергей Зубов](https://htmlacademy.ru/profile/serj).
 
 ---
 
