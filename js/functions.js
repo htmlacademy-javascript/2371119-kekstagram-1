@@ -3,11 +3,7 @@ function isPalindrome(string) {
     return 'Не строка';
   }
   string = string.toLowerCase().replace(/\W/g, '');
-  if (string.split('').reverse().join('') === string) {
-    return true;
-  } else {
-    return false;
-  }
+  return string.split('').reverse().join('') === string;
 }
 
 function numberFromString(string) {
