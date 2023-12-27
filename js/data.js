@@ -74,7 +74,7 @@ const createComment = () => {
   };
   return {
     id: createCommentID(),
-    avatar: `img/avatar${createAvatar()}.svg`,
+    avatar: `img/avatar-${createAvatar()}.svg`,
     message: getRandomArrayElement(comments),
     name: getRandomArrayElement(names),
   };
@@ -92,4 +92,4 @@ function createPhoto () {
 
 const createPhotos = () => Array.from({length: PHOTOS_COUNT}, createPhoto);
 
-export {createPhotos};
+export {createPhotos, createPhoto};
