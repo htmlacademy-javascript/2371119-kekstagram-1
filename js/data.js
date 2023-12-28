@@ -74,7 +74,7 @@ const createComment = () => {
   };
   return {
     id: createCommentID(),
-    avatar: `img/avatar${createAvatar()}.svg`,
+    avatar: `img/avatar-${createAvatar()}.svg`,
     message: getRandomArrayElement(comments),
     name: getRandomArrayElement(names),
   };
@@ -86,10 +86,10 @@ function createPhoto () {
     url: `photos/${createURL()}.jpg`,
     description: getRandomArrayElement(descriptions),
     likes: getRandomPositiveInteger(15, 200),
-    comments: Array.from({length: getRandomPositiveInteger(1, 5)}, createComment),
+    comments: Array.from({length: getRandomPositiveInteger(5, 10)}, createComment),
   };
 }
 
 const createPhotos = () => Array.from({length: PHOTOS_COUNT}, createPhoto);
 
-export {createPhotos};
+export {createPhotos, createPhoto};
