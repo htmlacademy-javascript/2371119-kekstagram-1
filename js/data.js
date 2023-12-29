@@ -86,7 +86,7 @@ function createPhoto () {
     url: `photos/${createURL()}.jpg`,
     description: getRandomArrayElement(descriptions),
     likes: getRandomPositiveInteger(15, 200),
-    comments: Array.from({length: getRandomPositiveInteger(5, 10)}, createComment),
+    comments: Array.from({length: getRandomPositiveInteger(5, 20)}, createComment),
   };
 }
 
