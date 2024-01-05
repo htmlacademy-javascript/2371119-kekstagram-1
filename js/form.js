@@ -28,12 +28,20 @@ const onUploadEscKeydown = (evt) => {
   onEscKeydown(evt, closeUploadOverlay);
 };
 
+const onFormSubmit = (evt) => {
+  const isValid = pristine.validate();
+  if (!isValid) {
+    evt.preventDefault();
+  }
+};
+
 function openUploadOverlay() {
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onUploadEscKeydown);
   scaleControlSmaller.addEventListener('click', onSmallerScaleControlClick);
   scaleControlBigger.addEventListener('click', onBiggerScaleControlClick);
+  uploadForm.addEventListener('submit', onFormSubmit);
 }
 
 function closeUploadOverlay() {
@@ -43,9 +51,9 @@ function closeUploadOverlay() {
   document.removeEventListener('keydown', onUploadEscKeydown);
   scaleControlSmaller.removeEventListener('click', onSmallerScaleControlClick);
   scaleControlBigger.removeEventListener('click', onBiggerScaleControlClick);
+  uploadForm.removeEventListener('submit', onFormSubmit);
   scaleImage();
 }
-
 
 uploadFile.addEventListener('change', openUploadOverlay);
 uploadCloseButton.addEventListener('click', closeUploadOverlay);
