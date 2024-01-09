@@ -9,4 +9,12 @@ const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0,
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export { getRandomPositiveInteger, getRandomArrayElement, isEscapeKey };
+const onEscKeydown = (evt, action) => {
+  const textFields = ['INPUT', 'TEXTAREA'];
+  if (isEscapeKey(evt) && !textFields.includes(evt.target.tagName)) {
+    evt.preventDefault();
+    action();
+  }
+};
+
+export { getRandomPositiveInteger, getRandomArrayElement, onEscKeydown};

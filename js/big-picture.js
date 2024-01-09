@@ -1,4 +1,4 @@
-import { isEscapeKey } from './util.js';
+import { onEscKeydown } from './util.js';
 
 const bodyElement = document.querySelector('body');
 const pictures = document.querySelector('.pictures');
@@ -15,10 +15,7 @@ let commentsShown = 0;
 let comments = [];
 
 const onPictureEscKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    closeBigPicture();
-  }
+  onEscKeydown(evt, closeBigPicture);
 };
 
 const getTemplateComment = ({avatar, message, name}) => {
