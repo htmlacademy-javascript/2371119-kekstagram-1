@@ -1,6 +1,6 @@
 import { onEscKeydown } from './util.js';
 import { validateHashtags } from './validation.js';
-import { onSmallerScaleControlClick, onBiggerScaleControlClick, scaleImage, onFormChange } from './edit-picture.js';
+import { onSmallerScaleControlClick, onBiggerScaleControlClick, scaleImage, updateSlider, onFormChange } from './edit-picture.js';
 import '../vendor/pristine/pristine.min.js';
 
 const body = document.body;
@@ -47,6 +47,7 @@ function openUploadOverlay() {
 
 function closeUploadOverlay() {
   uploadForm.reset();
+  updateSlider();
   uploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onUploadEscKeydown);

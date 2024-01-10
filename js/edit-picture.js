@@ -4,6 +4,7 @@ const scaleControlValue = document.querySelector('.scale__control--value');
 const previewImage = document.querySelector('.img-upload__preview img');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const slider = sliderContainer.querySelector('.effect-level__slider');
+const effectLevel = document.querySelector('.effect-level__value');
 
 const SCALE_CONTROL_STEP = 25;
 
@@ -89,7 +90,7 @@ noUiSlider.create(slider, {
   step: EFFECTS[0].step,
 });
 
-const updateSlider = (effect) => {
+export function updateSlider (effect = EFFECTS[0]) {
   sliderContainer.classList.remove('hidden');
   slider.classList.remove('hidden');
   slider.noUiSlider.updateOptions({
@@ -104,7 +105,7 @@ const updateSlider = (effect) => {
     slider.classList.add('hidden');
     sliderContainer.classList.add('hidden');
   }
-};
+}
 
 export function onFormChange (evt) {
   if (!evt.target.classList.contains('effects__radio')) {
@@ -120,6 +121,7 @@ const onSliderUpdate = () => {
   const effectValue = slider.noUiSlider.get();
   previewImage.classList.add(`effects__preview--${chosenEffect.name}`);
   previewImage.style.filter = `${chosenEffect.style}(${effectValue}${chosenEffect.unit})`;
+  effectLevel.value = `${effectValue}`;
 };
 
 slider.noUiSlider.on('update', onSliderUpdate);
