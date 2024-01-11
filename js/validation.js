@@ -14,6 +14,9 @@ const hasUniqueTags = (tags) => {
 };
 
 export function validateHashtags (value) {
+  if (value === '') {
+    return true;
+  }
   const tags = value.split(' ');
   return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
 }

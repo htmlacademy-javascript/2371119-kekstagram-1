@@ -1,6 +1,6 @@
 import { onEscKeydown } from './util.js';
 import { validateHashtags } from './validation.js';
-import { onSmallerScaleControlClick, onBiggerScaleControlClick, scaleImage } from './edit-picture.js';
+import { onSmallerScaleControlClick, onBiggerScaleControlClick, scaleImage, updateSlider, onFormChange } from './edit-picture.js';
 import '../vendor/pristine/pristine.min.js';
 
 const body = document.body;
@@ -41,16 +41,19 @@ function openUploadOverlay() {
   document.addEventListener('keydown', onUploadEscKeydown);
   scaleControlSmaller.addEventListener('click', onSmallerScaleControlClick);
   scaleControlBigger.addEventListener('click', onBiggerScaleControlClick);
+  uploadForm.addEventListener('change', onFormChange);
   uploadForm.addEventListener('submit', onFormSubmit);
 }
 
 function closeUploadOverlay() {
   uploadForm.reset();
+  updateSlider();
   uploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onUploadEscKeydown);
   scaleControlSmaller.removeEventListener('click', onSmallerScaleControlClick);
   scaleControlBigger.removeEventListener('click', onBiggerScaleControlClick);
+  uploadForm.removeEventListener('change', onFormChange);
   uploadForm.removeEventListener('submit', onFormSubmit);
   scaleImage();
 }
