@@ -17,4 +17,31 @@ const onEscKeydown = (evt, action) => {
   }
 };
 
-export { getRandomPositiveInteger, getRandomArrayElement, onEscKeydown};
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = 100;
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = 0;
+  alertContainer.style.top = 0;
+  alertContainer.styleright = 0;
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+
+  alertContainer.textContent = message;
+
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, 5000);
+};
+
+const appendFragment = (template) => {
+  const fragment = document.createDocumentFragment();
+  fragment.append(template);
+  document.body.append(fragment);
+};
+
+export { getRandomPositiveInteger, getRandomArrayElement, onEscKeydown, showAlert, appendFragment };
