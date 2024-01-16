@@ -19,15 +19,17 @@ const onEscKeydown = (evt, action) => {
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
-  alertContainer.style.zIndex = 100;
-  alertContainer.style.position = 'absolute';
-  alertContainer.style.left = 0;
-  alertContainer.style.top = 0;
-  alertContainer.styleright = 0;
-  alertContainer.style.padding = '10px 3px';
-  alertContainer.style.fontSize = '30px';
-  alertContainer.style.textAlign = 'center';
-  alertContainer.style.backgroundColor = 'red';
+  alertContainer.style.cssText = `
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 10px 3px;
+    font-size: 30px;
+    text-align: center;
+    background-color: red;
+  `;
 
   alertContainer.textContent = message;
 
