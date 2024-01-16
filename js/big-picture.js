@@ -76,6 +76,7 @@ function openBigPicture () {
   bodyElement.classList.add('modal-open');
   loadMore.addEventListener('click', onCommentsLoadMore);
   document.addEventListener('keydown', onPictureEscKeydown);
+  bigPictureCloseButton.addEventListener('click', closeBigPicture);
 }
 
 function closeBigPicture () {
@@ -84,8 +85,5 @@ function closeBigPicture () {
   document.removeEventListener('keydown', onPictureEscKeydown);
   loadMore.removeEventListener('click', onCommentsLoadMore);
   commentsShown = 0;
+  bigPictureCloseButton.removeEventListener('click', closeBigPicture);
 }
-
-bigPictureCloseButton.addEventListener('click', () => {
-  closeBigPicture();
-});
