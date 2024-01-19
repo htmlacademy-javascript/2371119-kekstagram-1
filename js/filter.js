@@ -35,12 +35,10 @@ const filterPictures = () => {
 const debouncedRenderPictures = debounce(renderPictures);
 
 filtersElement.addEventListener('click', (evt) => {
-  if (!evt.target.classList.contains('img-filters__button')) {
+  if (!evt.target.classList.contains('img-filters__button') || evt.target.id === currentFilter) {
     return;
   }
-  if (evt.target.id === currentFilter) {
-    return;
-  }
+
   filtersElement
     .querySelector('.img-filters__button--active')
     .classList.remove('img-filters__button--active');
