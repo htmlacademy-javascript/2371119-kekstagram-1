@@ -1,10 +1,11 @@
-const getData = (onSuccess, onFail) => {
+const getData = (onSuccess, turnFilterOn, onFail) => {
   fetch('https://25.javascript.pages.academy/kekstagram/data')
     .then((response) => {
       if (response.ok) {
         response.json()
           .then((posts) => {
             onSuccess(posts);
+            turnFilterOn(posts);
           });
       } else {
         throw new Error('Не удалось загрузить фотографии.');
