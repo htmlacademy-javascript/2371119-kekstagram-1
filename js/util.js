@@ -46,4 +46,13 @@ const appendFragment = (template) => {
   document.body.append(fragment);
 };
 
-export { getRandomPositiveInteger, getRandomArrayElement, onEscKeydown, showAlert, appendFragment };
+function debounce (callback, timeoutDelay = 500) {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export { getRandomPositiveInteger, getRandomArrayElement, onEscKeydown, showAlert, appendFragment, debounce };
