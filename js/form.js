@@ -12,11 +12,13 @@ const errorButton = errorTemplate.querySelector('.error__button');
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadFile = uploadForm.querySelector('#upload-file');
 const uploadOverlay = uploadForm.querySelector('.img-upload__overlay');
+const photoPreview = document.querySelector('.img-upload__preview img');
 const scaleControlSmaller = uploadForm.querySelector('.scale__control--smaller');
 const scaleControlBigger = uploadForm.querySelector('.scale__control--bigger');
 const hashtags = uploadForm.querySelector('.text__hashtags');
 const submitButton = uploadForm.querySelector('.img-upload__submit');
 const uploadCloseButton = uploadForm.querySelector('#upload-cancel');
+const effectsPreview = document.querySelectorAll('.effects__preview');
 
 const onOuterErrorClick = (evt) => {
   if (evt.target.className !== 'error__inner') {
@@ -129,4 +131,18 @@ function closeErrorMessage () {
   document.removeEventListener('click', onOuterErrorClick);
 }
 
-uploadFile.addEventListener('change', openUploadOverlay);
+uploadFile.addEventListener('change', () => {
+  const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+  const file = uploadFile.files[0];
+  const fileName = file.name.toLowerCase();
+
+  const matches = FILE_TYPES.some((element) => fileName.endsWith(element));
+
+  if (matches) {
+    photoPreview.src = URL.createObjectURL(file);
+    effectsPreview.forEach((preview) => {
+      preview.style.backgroundImage = `url('${photoPreview.src}')`;
+    });
+    openUploadOverlay();
+  }
+});
